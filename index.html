@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="AFA Manager — simulador de gestión del fútbol argentino. Presidí la AFA, manejá los clubes, la Selección y la caja.">
+    <meta name="author" content="Bruno Y">
+    <meta name="theme-color" content="#060a09">
+    <meta property="og:title" content="AFA Manager · Presidencia 2026">
+    <meta property="og:description" content="Messi se retiró, Scaloni no sigue y la AFA busca rumbo. Te toca a vos.">
+    <meta property="og:type" content="website">
+    <title>AFA Manager · Presidencia</title>
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 3 42 9v14c0 11-8 19-18 22C14 42 6 34 6 23V9z' fill='%2316a34a'/%3E%3Ccircle cx='24' cy='22' r='6' fill='none' stroke='%23eafff5' stroke-width='2'/%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body class="sin-tema">
+
+    <div id="app">
+        <!-- ===== RIEL LATERAL (desktop) ===== -->
+        <aside id="riel" aria-label="Navegación principal">
+            <div class="riel-marca">
+                <span class="riel-logo" id="riel-logo"></span>
+                <span class="riel-marca-texto">
+                    <strong>AFA MANAGER</strong>
+                    <small>Presidencia 2026</small>
+                </span>
+            </div>
+
+            <div class="riel-mandato" id="riel-mandato"></div>
+
+            <nav class="riel-nav" id="riel-nav"></nav>
+
+            <div class="riel-pie">
+                <button class="btn-icono" id="btn-sonido" title="Sonido" aria-label="Activar o silenciar sonido"></button>
+                <button class="btn-icono" id="btn-ajustes" title="Ajustes y partidas" aria-label="Ajustes"></button>
+                <button class="btn-icono" id="btn-ayuda" title="Cómo se juega" aria-label="Ayuda"></button>
+            </div>
+            <div class="version-app" style="padding: 0 10px 10px">AFA Manager · v13.0</div>
+        </aside>
+
+        <!-- ===== COLUMNA PRINCIPAL ===== -->
+        <div id="principal">
+            <header id="topbar">
+                <div class="topbar-izq">
+                    <span class="topbar-logo solo-movil" id="topbar-logo"></span>
+                    <div class="topbar-titulo">
+                        <span class="eyebrow" id="topbar-eyebrow">Presidencia</span>
+                        <h1 id="topbar-titulo">Escritorio</h1>
+                    </div>
+                </div>
+
+                <div class="topbar-der">
+                    <div class="kpis" id="kpis" aria-label="Indicadores de gestión"></div>
+                    <button class="btn-icono con-badge" id="btn-bandeja" title="Bandeja de entrada" aria-label="Bandeja de entrada">
+                        <span class="badge" id="badge-bandeja" hidden>0</span>
+                    </button>
+                    <button class="btn-primario" id="btn-avanzar">
+                        <span class="btn-primario-texto">Avanzar fecha</span>
+                        <span class="btn-primario-fecha" id="btn-avanzar-fecha"></span>
+                    </button>
+                </div>
+            </header>
+
+            <main id="vista" tabindex="-1"></main>
+        </div>
+    </div>
+
+    <!-- ===== BARRA INFERIOR (mobile) ===== -->
+    <nav id="tabbar" aria-label="Navegación"></nav>
+
+    <!-- ===== CONTENEDORES GLOBALES ===== -->
+    <div id="capa-modales"></div>
+    <div id="toast-container" aria-live="polite" aria-atomic="false"></div>
+
+    <!-- ============================================
+         SCRIPTS (orden de dependencia)
+         ============================================ -->
+    <script src="js/core.js"></script>
+    <script src="js/colores.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/imagenes.js"></script>
+    <script src="js/sonidos.js"></script>
+    <script src="js/frases.js"></script>
+    <script src="js/toasts.js"></script>
+
+    <script src="js/ligas.js"></script>
+    <script src="js/partido.js"></script>
+    <script src="js/arbitros.js"></script>
+    <script src="js/arbitros_extra.js"></script>
+    <script src="js/liga.js"></script>
+    <script src="js/goleadores.js"></script>
+    <script src="js/streaming.js"></script>
+
+    <script src="js/presidente.js"></script>
+
+    <script src="js/decisiones.js"></script>
+    <script src="js/eventos.js"></script>
+    <script src="js/eventos_v4.js"></script>
+    <script src="js/finanzas.js"></script>
+
+    <script src="js/consejo.js"></script>
+    <script src="js/asamblea.js"></script>
+    <script src="js/objetivos.js"></script>
+    <script src="js/logros.js"></script>
+    <script src="js/dificultad.js"></script>
+    <script src="js/escenarios.js"></script>
+    <script src="js/oposicion.js"></script>
+    <script src="js/dirigentes.js"></script>
+    <script src="js/expedientes.js"></script>
+
+    <script src="js/seleccion.js"></script>
+    <script src="js/seleccion_partidos.js"></script>
+    <script src="js/plantel.js"></script>
+    <script src="js/mercado.js"></script>
+    <script src="js/tanda.js"></script>
+    <script src="js/inferiores.js"></script>
+    <script src="js/eliminatorias.js"></script>
+    <script src="js/historial.js"></script>
+    <script src="js/copa_liga.js"></script>
+    <script src="js/secanuca.js"></script>
+    <script src="js/datos.js"></script>
+    <script src="js/operativo.js"></script>
+    <script src="js/clubes_vida.js"></script>
+    <script src="js/tapa.js"></script>
+    <script src="js/portada.js"></script>
+    <script src="js/consejo_extra.js"></script>
+    <script src="js/fecha_vivo.js"></script>
+    <script src="js/premios.js"></script>
+    <script src="js/documental.js"></script>
+    <script src="js/decisiones_procedurales.js"></script>
+    <script src="js/copa_america.js"></script>
+    <script src="js/continentales.js"></script>
+    <script src="js/ranking_fifa.js"></script>
+    <script src="js/noticias.js"></script>
+    <script src="js/encuestas.js"></script>
+    <script src="js/prensa.js"></script>
+    <script src="js/sedes.js"></script>
+    <script src="js/copa_argentina.js"></script>
+
+    <script src="js/vistas.js"></script>
+    <script src="js/vistas2.js"></script>
+    <script src="js/vistas3.js"></script>
+    <script src="js/guardado.js"></script>
+    <script src="js/juego.js"></script>
+    <script src="js/pulido.js"></script>
+    <script src="js/app.js"></script>
+
+    <noscript>
+        <div class="sin-js">
+            <strong>AFA Manager necesita JavaScript.</strong>
+            Activá JavaScript en tu navegador para jugar.
+        </div>
+    </noscript>
+
+</body>
+</html>
